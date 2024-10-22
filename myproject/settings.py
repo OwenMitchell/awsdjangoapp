@@ -143,3 +143,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGOUT_REDIRECT_URL = "/account/"
+
+CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = ['jzt7fhb86p.us-east-2.awsapprunner.com']
