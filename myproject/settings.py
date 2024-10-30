@@ -149,4 +149,4 @@ LOGOUT_REDIRECT_URL = "/account/"
 CSRF_COOKIE_SECURE = True
 CSRF_TRUSTED_ORIGINS = ['https://jzt7fhb86p.us-east-2.awsapprunner.com']
 
-STRIPE_SECRET_KEY = environ.get("STRIPE_SECRET_KEY")["STRIPE_SECRET_KEY"]
+STRIPE_SECRET_KEY = json.laods(environ.get("STRIPE_SECRET_KEY"))["STRIPE_SECRET_KEY"]
