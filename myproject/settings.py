@@ -32,12 +32,13 @@ if "DATABASE_SECRET" in environ:
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", ".awsapprunner.com"]
+ALLOWED_HOSTS = ["localhost", ".awsapprunner.com"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'api',
     'account',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -146,3 +148,5 @@ LOGOUT_REDIRECT_URL = "/account/"
 
 CSRF_COOKIE_SECURE = True
 CSRF_TRUSTED_ORIGINS = ['https://jzt7fhb86p.us-east-2.awsapprunner.com']
+
+STRIPE_SECRET_KEY = environ.get("DATABASE_SECRET")
