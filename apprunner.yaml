@@ -9,8 +9,14 @@ run:
   command: sh startup.sh
   network:
     port: 8000
+  env: 
+    - name: CREATE_SUPERUSER
+      value: "True"
   secrets:
     - name: DATABASE_SECRET
       value-from: "arn:aws:secretsmanager:us-east-2:779846812504:secret:prod/mysecret-iFA4Kw"
     - name: STRIPE_SECRET_KEY
       value-from:  "arn:aws:secretsmanager:us-east-2:779846812504:secret:prod/stripetestsecretkey-HDw8vi"
+    - name: DJANGO_SUPERUSER_PASSWORD
+      value-from:  "arn:aws:secretsmanager:us-east-2:779846812504:secret:prop/djangosuperuserpassword-RZwvw1"
+    
