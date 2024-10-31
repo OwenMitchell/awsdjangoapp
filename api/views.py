@@ -9,6 +9,8 @@ from django.conf import settings
 from django.middleware.csrf import get_token
 import json
 
+from django.views.decorators.csrf import csrf_exempt
+
 
 class HelloWorld(APIView):
     def get(self, request):
@@ -19,7 +21,7 @@ class HelloWorld(APIView):
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
-
+@csrf_exempt
 class CreatePaymentIntentView(View):
     def post(self, request, *args, **kwargs):
         try:
