@@ -33,8 +33,7 @@ if "DATABASE_SECRET" in environ:
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", ".awsapprunner.com"]
-
+ALLOWED_HOSTS = ["localhost", ".awsapprunner.com", '127.0.0.1']
 
 # Application definition
 
