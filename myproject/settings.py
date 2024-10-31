@@ -33,7 +33,7 @@ if "DATABASE_SECRET" in environ:
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", ".awsapprunner.com", '127.0.0.1']
+ALLOWED_HOSTS = ["localhost", ".awsapprunner.com", '127.0.0.1', 'owenmitchell.github.io']
 
 # Application definition
 
@@ -161,7 +161,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGOUT_REDIRECT_URL = "/account/"
 
 CSRF_COOKIE_SECURE = True
-CSRF_TRUSTED_ORIGINS = ['https://jzt7fhb86p.us-east-2.awsapprunner.com']
+CSRF_TRUSTED_ORIGINS = ['https://jzt7fhb86p.us-east-2.awsapprunner.com', "https://owenmitchell.github.io"]
 
 STRIPE_SECRET_KEY = json.loads(environ.get("STRIPE_SECRET_KEY"))["STRIPE_SECRET_KEY"]
 
@@ -169,5 +169,6 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Frontend URL
+    "https://owenmitchell.github.io",
     "http://127.0.0.1:3000",
 ]
