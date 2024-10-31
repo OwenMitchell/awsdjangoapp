@@ -161,9 +161,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGOUT_REDIRECT_URL = "/account/"
 
 CSRF_COOKIE_SECURE = True
-CSRF_TRUSTED_ORIGINS = ['https://jzt7fhb86p.us-east-2.awsapprunner.com', "https://owenmitchell.github.io"]
+CSRF_TRUSTED_ORIGINS = ['https://jzt7fhb86p.us-east-2.awsapprunner.com', "https://owenmitchell.github.io",
+    'http://localhost:3000',
+    "http://127.0.0.1:3000"]
 
 STRIPE_SECRET_KEY = json.loads(environ.get("STRIPE_SECRET_KEY"))["STRIPE_SECRET_KEY"]
+
+CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_SAMESITE = 'Lax'  # Set to 'Lax' or 'Strict' based on your requirements
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
