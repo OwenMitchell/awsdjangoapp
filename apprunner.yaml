@@ -14,3 +14,5 @@ run:
       value-from: "arn:aws:secretsmanager:us-east-2:779846812504:secret:prod/mysecret-iFA4Kw"
     - name: STRIPE_SECRET_KEY
       value-from:  "arn:aws:secretsmanager:us-east-2:779846812504:secret:prod/stripetestsecretkey-HDw8vi"
+    - name: AWS_SECRET_ACCESS_KEY
+      value-from: "arn:aws:secretsmanager:us-east-2:779846812504:secret:prod/AWS_SECRET_ACCESS_KEY-GjsB32"

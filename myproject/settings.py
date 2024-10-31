@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'account',
     'corsheaders',
     'rest_framework',
+    'storages',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,17 +133,25 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-MEDIA_URL = '/media/'  # URL to access media files
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Folder to store media files
+
+
+AWS_ACCESS_KEY_ID = 'AKIA3LET6ANMPTD2JTLZ'
+AWS_SECRET_ACCESS_KEY = json.loads(environ.get("AWS_SECRET_ACCESS_KEY"))["AWS_SECRET_ACCESS_KEY"]
+AWS_STORAGE_BUCKET_NAME = 'samholladayimages'
+AWS_S3_REGION_NAME = 'us-east-2'  # e.g., 'us-east-1'
+AWS_QUERYSTRING_AUTH = False
 
 STORAGES = {
     "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+
+MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
