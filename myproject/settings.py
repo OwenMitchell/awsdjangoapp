@@ -177,3 +177,12 @@ CORS_ALLOWED_ORIGINS = [
     "https://owenmitchell.github.io",
     "http://127.0.0.1:3000",
 ]
+
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE",
+    "OPTIONS",
+]
