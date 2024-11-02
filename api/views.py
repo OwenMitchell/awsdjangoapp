@@ -21,6 +21,7 @@ class HelloWorld(APIView):
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+@method_decorator(csrf_exempt, name='dispatch')
 class CreatePaymentIntentView(View):
     def post(self, request, *args, **kwargs):
         try:
