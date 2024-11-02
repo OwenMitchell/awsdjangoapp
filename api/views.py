@@ -21,18 +21,11 @@ class HelloWorld(APIView):
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
-@method_decorator(csrf_exempt, name='dispatch')
 class CreatePaymentIntentView(View):
     def post(self, request, *args, **kwargs):
         try:
             data = json.loads(request.body)
             amount = data.get('amount')  # amount in cents
-
-            sale = Sale(
-                items=data.get('cartItems')
-            )
-
-            sale.save()
 
             # Create a PaymentIntent
             intent = stripe.PaymentIntent.create(
