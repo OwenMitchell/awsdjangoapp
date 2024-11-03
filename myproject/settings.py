@@ -15,7 +15,7 @@ import json
 import dj_database_url
 import os
 from os import environ
-
+import logging
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -165,7 +165,9 @@ CSRF_TRUSTED_ORIGINS = ['https://jzt7fhb86p.us-east-2.awsapprunner.com', "https:
     'http://localhost:3000',
     "http://127.0.0.1:3000"]
 
-STRIPE_SECRET_KEY = json.loads(environ.get("STRIPE_SECRET_KEY"))["STRIPE_SECRET_KEY"]
+#STRIPE_SECRET_KEY = json.loads(environ.get("STRIPE_SECRET_KEY"))["STRIPE_SECRET_KEY"]
+STRIPE_SECRET_KEY='sk_test_51QEF9RLZmveBEED0Z2aclx92wMDnmFFmDqIhlbzEcJzHMBOTEJJeFCi4OIyxhcdBagIMuO4L4goq0ZkKeGiGV0SC00RikmL2dr'
+
 
 CSRF_COOKIE_HTTPONLY = False
 CSRF_COOKIE_SAMESITE = 'Lax'  # Set to 'Lax' or 'Strict' based on your requirements

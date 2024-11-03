@@ -26,13 +26,13 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 @method_decorator(csrf_exempt, name='dispatch')
 class CreatePaymentIntentView(View):
-    async def post(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         try:
             data = json.loads(request.body)
             amount = data.get('amount')  # amount in cents
 
             # Create a PaymentIntent
-            intent = await sync_to_async(stripe.PaymentIntent.create)(
+            intent = stripe.PaymentIntent.create(
                 amount=amount,
                 currency='cad',
             )
