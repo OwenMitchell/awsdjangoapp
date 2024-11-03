@@ -11,6 +11,9 @@ import json
 
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
+from asgiref.sync import sync_to_async
+import asyncio
+
 
 class HelloWorld(APIView):
     def get(self, request):
@@ -23,13 +26,13 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 @method_decorator(csrf_exempt, name='dispatch')
 class CreatePaymentIntentView(View):
-    def post(self, request, *args, **kwargs):
+    async def post(self, request, *args, **kwargs):
         try:
             data = json.loads(request.body)
             amount = data.get('amount')  # amount in cents
 
             # Create a PaymentIntent
-            intent = stripe.PaymentIntent.create(
+            intent = await sync_to_async(stripe.PaymentIntent.create)(
                 amount=amount,
                 currency='cad',
             )
