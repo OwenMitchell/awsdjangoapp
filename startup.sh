@@ -1,2 +1,5 @@
 #!/bin/bash
-python manage.py migrate && python manage.py collectstatic && gunicorn --workers 2 --timeout 120 myproject.wsgi
+python manage.py migrate && python manage.py collectstatic && gunicorn --workers 2 myproject.wsgi \
+    --access-logfile - \
+    --error-logfile - \
+    --log-level debug  # Adjust log level as needed
